@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domestic Hotels Category Performance — MIS Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0f1420;--card:#1a2233;--ink:#e8ecf4;--mut:#8b94a8;--acc:#f59e0b;--acc2:#38bdf8;--good:#34d399;--bad:#f87171;--line:#2a3550;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,Arial,sans-serif;padding:24px;max-width:1280px;margin:0 auto}
+h1{font-size:22px;font-weight:700} h1 span{color:var(--acc)}
+.sub{color:var(--mut);font-size:13px;margin:6px 0 20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800;color:var(--acc2)} .kpi .l{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{font-size:14px;margin-bottom:4px} .card p.note{font-size:11px;color:var(--mut);margin-bottom:10px}
+canvas{max-height:280px}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+tr.low td{color:var(--bad)} tr.good td:first-child{color:var(--good)}
+.full{grid-column:1/-1}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.b-red{background:#3a1c22;color:#f87171}.b-green{background:#12342b;color:#34d399}.b-amber{background:#3a2e12;color:#fbbf24}
+.bar-wrap{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:12px}
+.bar-wrap .nm{width:110px;color:var(--mut);flex:none}
+.bar{height:16px;border-radius:4px;background:linear-gradient(90deg,var(--acc2),#818cf8)}
+.bar-r{height:16px;border-radius:4px;background:linear-gradient(90deg,var(--acc),#f87171)}
+.pct{width:44px;text-align:right;flex:none;font-weight:700}
+.footer{color:var(--mut);font-size:11px;margin-top:22px;line-height:1.6}
+</style>
+<style>html,body{max-width:100%;overflow-x:hidden}*{min-width:0;box-sizing:border-box}canvas{max-width:100%!important}table{display:block;overflow-x:auto}</style>
+</head>
+<body>
+<h1>Domestic Hotels — <span>Category Performance MIS</span></h1>
+<p class="sub">Supply-side analysis of 58 Goibibo-listed properties across Goa, Jaipur, Manali, Udaipur &amp; Jodhpur &nbsp;•&nbsp; Source: Goibibo.com scrape (StayEase dataset) &nbsp;•&nbsp; No GMV/conversion fabricated — funnel metrics proposed, not reported</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">58</div><div class="l">Properties analysed</div></div>
+  <div class="kpi"><div class="v">1,408</div><div class="l">Total rooms (listed supply)</div></div>
+  <div class="kpi"><div class="v">4.02</div><div class="l">Avg rating /5 (all 5 markets)</div></div>
+  <div class="kpi"><div class="v">0%</div><div class="l">Accessibility listed (ALL markets)</div></div>
+  <div class="kpi"><div class="v">0%</div><div class="l">Parking listed (ALL markets)</div></div>
+  <div class="kpi"><div class="v">33%</div><div class="l">Breakfast listed (blended)</div></div>
+</div>
+
+<div class="grid">
+
+<div class="card">
+  <h3>1. Supply Depth — properties &amp; rooms by destination</h3>
+  <p class="note">Goa &amp; Jaipur carry volume; Udaipur is thin (4 properties).</p>
+  <canvas id="cSupply"></canvas>
+</div>
+
+<div class="card">
+  <h3>2. Quality — average rating &amp; review velocity</h3>
+  <p class="note">Udaipur/Goa quality-led; Jaipur &amp; Jodhpur trail (&lt;3.8 avg).</p>
+  <canvas id="cRating"></canvas>
+</div>
+
+<div class="card full">
+  <h3>3. Amenity coverage gaps (% of properties listing amenity)</h3>
+  <p class="note">The headline gaps: parking 0%, pool 0%, accessibility 0% across every market. WiFi listed by &lt;⅓ everywhere.</p>
+  <canvas id="cAmenity" style="max-height:300px"></canvas>
+</div>
+
+<div class="card">
+  <h3>4. Room-category mix (price-band proxy)</h3>
+  <p class="note">Source has no live tariffs → room-type tier used as the price-band lens.</p>
+  <canvas id="cMix"></canvas>
+</div>
+
+<div class="card">
+  <h3>5. Rating-band distribution</h3>
+  <p class="note">Jaipur has 3 of 8 properties &lt;3.0 — the worst tail risk in the set.</p>
+  <canvas id="cBand"></canvas>
+</div>
+
+<div class="card">
+  <h3>6. Goa — location (micro-market) mix</h3>
+  <p class="note">North-Goa belt (Calangute–Candolim–Baga) = 15 of 31 properties.</p>
+  <div id="goaAreas"></div>
+</div>
+
+<div class="card">
+  <h3>7. Goa — quality watchlist (rated &lt; 3.5)</h3>
+  <p class="note">Fix-or-delist candidates dragging category quality.</p>
+  <table>
+    <tr><th>ID</th><th>Area</th><th>Room type</th><th>Rooms</th><th>Rating</th><th>Reviews</th><th>Action</th></tr>
+    <tr class="low"><td>3</td><td>Calangute</td><td>Standard Room</td><td>15</td><td>2.5</td><td>2</td><td><span class="badge b-red">Fix / delist</span></td></tr>
+    <tr class="low"><td>37</td><td>Calangute</td><td>Standard A/C Room</td><td>6</td><td>3.4</td><td>3</td><td><span class="badge b-amber">Coach</span></td></tr>
+    <tr class="low"><td>145</td><td>—</td><td>AC Room</td><td>10</td><td>3.4</td><td>7</td><td><span class="badge b-amber">Coach</span></td></tr>
+    <tr class="good"><td>149</td><td>Anjuna</td><td>Casa Special</td><td>20</td><td>5.0</td><td>—</td><td><span class="badge b-green">Benchmark</span></td></tr>
+    <tr class="good"><td>509</td><td>Beach</td><td>Deluxe A/C Sea-facing Hut</td><td>16</td><td>4.8</td><td>—</td><td><span class="badge b-green">Benchmark</span></td></tr>
+  </table>
+</div>
+
+<div class="card full">
+  <h3>8. Funnel metrics — proposed (measurement plan, no fabricated GMV)</h3>
+  <table>
+    <tr><th>Metric</th><th>Definition</th><th>How to measure</th><th>Target (Goa pilot)</th></tr>
+    <tr><td>Room nights booked</td><td>Nights sold per property per month</td><td>Booking engine / channel-manager feed</td><td>Baseline in 30 days</td></tr>
+    <tr><td>Listing → booking conversion</td><td>Bookings ÷ listing-page views</td><td>Web analytics + booking events</td><td>+20% in 2 quarters</td></tr>
+    <tr><td>Ranking factors</td><td>Weight of rating, amenity-fill, photos, price competitiveness in sort order</td><td>A/B test on search ranking</td><td>Documented ranking spec</td></tr>
+    <tr><td>Amenity-fill rate</td><td>% of listings with breakfast / parking / WiFi / accessibility fields completed</td><td>Listing-content audit</td><td>Breakfast 23%→60%; accessibility 0%→25%</td></tr>
+    <tr><td>Review velocity</td><td>New reviews per property per month</td><td>Post-stay prompts</td><td>Goa avg 34 reviews → 50</td></tr>
+  </table>
+</div>
+
+</div>
+<p class="footer">Data integrity: all figures computed with SQL from the Goibibo-scraped StayEase dataset (250 properties / 99 Indian cities; 58 in scope). Prices, GMV and conversion are NOT in the source and are therefore NOT reported — the funnel section is a measurement plan. Companion file: Domestic_Hotels_Analysis.xlsx (6 analysis sheets + README).</p>
+
+<script>
+const D={
+ supply:[{d:'Goa',p:31,r:554,ar:17.9,rat:4.23,rev:34.4},{d:'Manali',p:10,r:213,ar:21.3,rat:3.89,rev:15.2},{d:'Jaipur',p:8,r:453,ar:56.6,rat:3.76,rev:43.1},{d:'Jodhpur',p:5,r:119,ar:23.8,rat:3.66,rev:53.2},{d:'Udaipur',p:4,r:69,ar:17.3,rat:4.30,rev:46.0}],
+ amenity:[{d:'Goa',b:23,p:0,w:16,pool:0,ac:71,ax:0},{d:'Jaipur',b:38,p:0,w:25,pool:0,ac:88,ax:0},{d:'Jodhpur',b:40,p:0,w:20,pool:0,ac:60,ax:0},{d:'Manali',b:60,p:0,w:30,pool:0,ac:10,ax:0},{d:'Udaipur',b:25,p:0,w:0,pool:0,ac:75,ax:0}],
+ mix:[{d:'Goa',c:'Other/Dorm',n:13},{d:'Goa',c:'Deluxe/Executive',n:7},{d:'Goa',c:'Standard/Economy',n:7},{d:'Goa',c:'Premium/Suite',n:4},
+      {d:'Jaipur',c:'Deluxe/Executive',n:3},{d:'Jaipur',c:'Premium/Suite',n:3},{d:'Jaipur',c:'Other/Dorm',n:2},
+      {d:'Jodhpur',c:'Deluxe/Executive',n:2},{d:'Jodhpur',c:'Other/Dorm',n:2},{d:'Jodhpur',c:'Standard/Economy',n:1},
+      {d:'Manali',c:'Deluxe/Executive',n:6},{d:'Manali',c:'Premium/Suite',n:3},{d:'Manali',c:'Other/Dorm',n:1},
+      {d:'Udaipur',c:'Deluxe/Executive',n:2},{d:'Udaipur',c:'Other/Dorm',n:2}],
+ band:[{d:'Goa',b:'<3.0',n:1},{d:'Goa',b:'3.0-3.9',n:11},{d:'Goa',b:'4.0-4.4',n:6},{d:'Goa',b:'4.5-5.0',n:13},
+       {d:'Jaipur',b:'<3.0',n:3},{d:'Jaipur',b:'3.0-3.9',n:2},{d:'Jaipur',b:'4.0-4.4',n:2},{d:'Jaipur',b:'4.5-5.0',n:1},
+       {d:'Jodhpur',b:'<3.0',n:1},{d:'Jodhpur',b:'3.0-3.9',n:1},{d:'Jodhpur',b:'4.0-4.4',n:2},{d:'Jodhpur',b:'4.5-5.0',n:1},
+       {d:'Manali',b:'<3.0',n:1},{d:'Manali',b:'3.0-3.9',n:6},{d:'Manali',b:'4.0-4.4',n:2},{d:'Manali',b:'4.5-5.0',n:1},
+       {d:'Udaipur',b:'3.0-3.9',n:1},{d:'Udaipur',b:'4.0-4.4',n:2},{d:'Udaipur',b:'4.5-5.0',n:1}],
+ area:[['Calangute',7],['Candolim',5],['Panjim',4],['Baga',3],['Anjuna',3],['Others',2],['Vagator',1],['Palolem',1],['Mobor',1],['Bogmalo',1]]
+};
+Chart.defaults.color='#8b94a8';Chart.defaults.borderColor='#2a3550';
+const PAL=['#f59e0b','#38bdf8','#818cf8','#34d399','#f87171'];
+const dests=D.supply.map(x=>x.d);
+new Chart(cSupply,{type:'bar',data:{labels:dests,datasets:[{label:'Properties',data:D.supply.map(x=>x.p),backgroundColor:PAL[0]},{label:'Rooms',data:D.supply.map(x=>x.r),backgroundColor:PAL[1]}]},options:{scales:{y:{beginAtZero:true}},plugins:{legend:{position:'bottom'}}}});
+new Chart(cRating,{type:'bar',data:{labels:dests,datasets:[{label:'Avg rating /5',data:D.supply.map(x=>x.rat),backgroundColor:dests.map((_,i)=>D.supply[i].rat<3.8?'#f87171':'#34d399')},{label:'Avg review count',data:D.supply.map(x=>x.rev),backgroundColor:PAL[2]}]},options:{plugins:{legend:{position:'bottom'}}}});
+new Chart(cAmenity,{type:'bar',data:{labels:['Breakfast','WiFi','AC','Parking','Pool','Accessibility'],
+ datasets:dests.map((d,i)=>{const a=D.amenity.find(x=>x.d===d);return{label:d,data:[a.b,a.w,a.ac,a.p,a.pool,a.ax],backgroundColor:PAL[i]}})},
+ options:{plugins:{legend:{position:'bottom'},title:{display:false}},scales:{y:{max:100,title:{display:true,text:'% of properties'}}}}});
+const cats=['Premium/Suite','Deluxe/Executive','Standard/Economy','Other/Dorm'];
+new Chart(cMix,{type:'bar',data:{labels:dests,datasets:cats.map((c,i)=>({label:c,data:dests.map(d=>{const m=D.mix.find(x=>x.d===d&&x.c===c);return m?m.n:0}),backgroundColor:PAL[i]}))},options:{scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'# properties'}}},plugins:{legend:{position:'bottom'}}}});
+const bands=['<3.0','3.0-3.9','4.0-4.4','4.5-5.0'];
+const bcol=['#f87171','#fbbf24','#38bdf8','#34d399'];
+new Chart(cBand,{type:'bar',data:{labels:dests,datasets:bands.map((b,i)=>({label:b,data:dests.map(d=>{const m=D.band.find(x=>x.d===d&&x.b===b);return m?m.n:0}),backgroundColor:bcol[i]}))},options:{scales:{x:{stacked:true},y:{stacked:true}},plugins:{legend:{position:'bottom'}}}});
+document.getElementById('goaAreas').innerHTML=D.area.map(a=>`<div class="bar-wrap"><span class="nm">${a[0]}</span><div class="bar" style="width:${a[1]*30+8}px"></div><span class="pct">${a[1]}</span></div>`).join('');
+</script>
+</body>
+</html>

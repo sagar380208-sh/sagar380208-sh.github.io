@@ -1,0 +1,64 @@
+/* Resume (1 page) + CV (World Bank format) — shared by the web pages and the PDF build */
+.doc{font-family:Arial,Helvetica,sans-serif;color:#111;line-height:1.38;text-align:left}
+.doc *{box-sizing:border-box}
+.doc h1{margin:0;font-weight:700;letter-spacing:.02em}
+.doc ul{margin:2px 0 4px;padding-left:16px}
+.doc li{margin:0 0 2px}
+.doc p{margin:0 0 4px}
+.doc .mu{color:#555}
+.doc b{font-weight:700}
+
+/* ---- one-page resume ---- */
+.doc-resume{font-size:9.3pt;line-height:1.36}
+.doc-resume h1{font-size:20pt;line-height:1.1}
+.doc-resume .ttl{font-weight:700;font-size:10pt;margin:2px 0 1px;color:#333}
+.doc-resume .ct{font-size:8.9pt;color:#222;margin-bottom:3px}
+.doc-resume h2{font-size:9.5pt;letter-spacing:.07em;text-transform:uppercase;margin:8px 0 3px;padding-bottom:1px;border-bottom:.8pt solid #777}
+.doc-resume .row{display:flex;justify-content:space-between;gap:12px;margin-top:3px}
+.doc-resume .row span{white-space:nowrap;color:#333;font-size:8.8pt}
+.doc-resume ul{margin:1px 0 2px}
+.doc-resume li{margin-bottom:1px}
+
+/* ---- detailed CV ---- */
+.doc-cv{font-size:9.6pt}
+.doc-cv .kick{font-size:8.6pt;letter-spacing:.2em;color:#555;margin:0 0 2px}
+.doc-cv h1{font-size:25pt;line-height:1.1;margin-bottom:8px}
+.doc-cv h2{font-size:10.6pt;margin:16px 0 6px;padding:3px 6px;background:#e9e9e9;border-left:3pt solid #111;break-after:avoid}
+.doc-cv table{width:100%;border-collapse:collapse;margin:0 0 8px}
+.doc-cv th,.doc-cv td{border:.6pt solid #888;padding:4px 6px;vertical-align:top;text-align:left}
+.doc-cv th{background:#f3f3f3;font-weight:700;width:26%}
+.doc-cv table.grid thead th{width:auto;background:#e9e9e9}
+.doc-cv table.grid td{font-size:8.9pt}
+.doc-cv table.job{margin-bottom:10px;break-inside:auto}
+.doc-cv table.job th{width:17%}
+.doc-cv tr{break-inside:avoid}
+.doc-cv table.job tr{break-inside:auto}
+.doc-cv table.job li{break-inside:avoid}
+.doc-cv ul{margin:0;padding-left:15px}
+.doc-cv li{margin-bottom:3px}
+.doc-cv .grid.wide td:first-child{width:24%}
+.doc-cv .grid.wide td:nth-child(2){width:38%}
+
+/* ---- on the web: a sheet of paper ---- */
+.cvpage{padding:clamp(32px,6vw,72px) 0 clamp(48px,8vw,110px)}
+.cvhead{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-end;justify-content:space-between;margin-bottom:36px}
+.cvhead .lede{max-width:56ch}
+.paper{background:#fff;color:#111;border:1px solid var(--rule,#ddd);border-radius:6px;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);padding:clamp(20px,4.5vw,56px);max-width:900px;margin:0 auto;overflow-x:auto}
+.paper .doc{min-width:0}
+@media (max-width:640px){
+  .doc-cv{font-size:9.4pt}
+  .doc-cv th{width:34%}
+  .doc-cv table.job th{width:30%}
+  .doc-cv table.grid{display:block;overflow-x:auto}
+}
+
+/* ---- PDF build ---- */
+@page{size:A4;margin:10mm 12mm}
+@media print{
+  html,body{background:#fff!important}
+  .doc-cv h2{background:#e9e9e9!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .doc-cv th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+.docname{font-family:inherit}
+.paper{overflow-x:auto}

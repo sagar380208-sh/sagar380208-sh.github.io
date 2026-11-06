@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" data-theme="dark" style="background:#16130F">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COVID-19 Exploration &amp; Dashboard: data project | Sagar Sharma</title>
+<meta name="description" content="Self-directed data project by Sagar Sharma. A global dataset explored in SQL, then handed to a public Tableau dashboard with forecasting.">
+<link rel="canonical" href="https://sagar380208-sh.github.io/case-d-covid">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Sagar Sharma">
+<meta property="og:title" content="COVID-19 Exploration &amp; Dashboard: data project | Sagar Sharma">
+<meta property="og:description" content="Self-directed data project by Sagar Sharma. A global dataset explored in SQL, then handed to a public Tableau dashboard with forecasting.">
+<meta property="og:url" content="https://sagar380208-sh.github.io/case-d-covid">
+<meta property="og:image" content="https://sagar380208-sh.github.io/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#16130F">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js");setTimeout(function(){if(document.querySelector("#main>.pre"))document.documentElement.classList.remove("js")},5000)</script>
+<style>.js .pre{display:none}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=48">
+<link rel="stylesheet" href="assets/css/deck.css?v=48">
+</head>
+<body data-page="case" data-id="d-covid">
+<main id="main"><div class="pre"><article><h1>COVID-19 Exploration &amp; Dashboard</h1><p>SQL CTEs · window functions · Tableau forecasting. Self-directed data project by Sagar Sharma.</p><p>A global dataset explored in SQL, then handed to a public Tableau dashboard with forecasting.</p><ul><li>~2%: Global case fatality rate</li><li>~10%: US population infected</li><li>4: Dashboard views</li></ul><h2>The problem</h2><p>A global COVID-19 dataset with mortality and vaccination data, in inconsistent types.</p><p>Quantify the likelihood of dying if infected, find the highest infection rates by population, and publish it accessibly.</p><h2>What I built</h2><ul><li>Self-joins, CTEs, temp tables and window functions for rolling vaccination counts per country.</li><li>Aggregates and CAST to fix type inconsistencies in death-percentage calculations.</li><li>Permanent views for BI hand-off; a Tableau dashboard with geographic roles and time-series forecasting.</li></ul><h2>The result</h2><p>~2% global death rate among confirmed cases (deaths ÷ confirmed cases); ~10% of the US population infected (infections ÷ population). Published on Tableau Public with regional drill-down and a year-end forecast.</p><h2>How I contributed</h2><p>Self-directed across both halves: the SQL exploration (joins, CTEs, temp tables, window functions, views) and the Tableau dashboard it fed.</p><h2>What I learned</h2><p>Two rates with two different denominators — infections ÷ population and deaths ÷ confirmed cases — answer two different questions. Knowing which denominator you are using is what separates an analysis from a chart.</p><p><a href="./">Back to Sagar Sharma's portfolio</a></p><p>Email: <a href="mailto:sagar380208@gmail.com">sagar380208@gmail.com</a> · <a href="https://www.linkedin.com/in/sagar0sharma/">LinkedIn</a> · <a href="resume">Resume</a> · <a href="cv">CV</a></p></article></div></main>
+<script src="assets/js/data.js?v=48" defer></script>
+<script src="assets/js/data-extra.js?v=48" defer></script>
+<script src="assets/js/data-new.js?v=48" defer></script>
+<script src="assets/js/site.js?v=48" defer></script>
+<script src="assets/js/motion.js?v=48" defer></script>
+</body>
+</html>

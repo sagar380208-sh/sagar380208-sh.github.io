@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" data-theme="dark" style="background:#16130F">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SQL Data Warehouse: data project | Sagar Sharma</title>
+<meta name="description" content="Self-directed data project by Sagar Sharma. Siloed CRM and ERP sales data consolidated into one governed source of truth.">
+<link rel="canonical" href="https://sagar380208-sh.github.io/case-d-warehouse">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Sagar Sharma">
+<meta property="og:title" content="SQL Data Warehouse: data project | Sagar Sharma">
+<meta property="og:description" content="Self-directed data project by Sagar Sharma. Siloed CRM and ERP sales data consolidated into one governed source of truth.">
+<meta property="og:url" content="https://sagar380208-sh.github.io/case-d-warehouse">
+<meta property="og:image" content="https://sagar380208-sh.github.io/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#16130F">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js");setTimeout(function(){if(document.querySelector("#main>.pre"))document.documentElement.classList.remove("js")},5000)</script>
+<style>.js .pre{display:none}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=48">
+<link rel="stylesheet" href="assets/css/deck.css?v=48">
+</head>
+<body data-page="case" data-id="d-warehouse">
+<main id="main"><div class="pre"><article><h1>SQL Data Warehouse</h1><p>Medallion architecture · Bronze → Silver → Gold. Self-directed data project by Sagar Sharma.</p><p>Siloed CRM and ERP sales data consolidated into one governed source of truth.</p><ul><li>3: Layers built</li><li>Weeks → minutes: Report prep time</li><li>3: Automated quality checks</li></ul><h2>The problem</h2><p>Sales data lived in disconnected CRM and ERP systems — no single point of truth.</p><p>Design and build a scalable Medallion Architecture to improve traceability, quality and reporting speed.</p><h2>What I built</h2><ul><li>Bronze: automated raw CSV ingestion with BULK INSERT and stored procedures, TRY…CATCH error handling and execution logging.</li><li>Silver: deduplication with window functions, type casting, null handling with IS NULL and COALESCE.</li><li>Gold: business-ready star-schema views, multi-source LEFT JOINs, surrogate keys via ROW_NUMBER().</li><li>Quality gate: a Gold-layer validation procedure enforcing primary-key uniqueness, referential integrity between the fact table and its dimensions, and null / range checks on sales fields — plus a data catalogue documenting dependencies, keys and Bronze-to-Gold lineage.</li></ul><h2>The result</h2><p>In this self-directed build, report preparation moves from weeks of manual work to minutes, with a governed data catalogue and lineage.</p><h2>How I contributed</h2><p>Self-directed, end to end. I designed the three layers, wrote the ingestion procedures and cleansing rules, built the Gold-layer views and surrogate keys, and set up the validation checks and the catalogue.</p><h2>What I learned</h2><p>A warehouse is a trust machine. The unglamorous parts — logging, repeatable loads, referential-integrity checks — are what make a number believable, and surrogate keys keep reporting independent from messy source systems.</p><p><a href="./">Back to Sagar Sharma's portfolio</a></p><p>Email: <a href="mailto:sagar380208@gmail.com">sagar380208@gmail.com</a> · <a href="https://www.linkedin.com/in/sagar0sharma/">LinkedIn</a> · <a href="resume">Resume</a> · <a href="cv">CV</a></p></article></div></main>
+<script src="assets/js/data.js?v=48" defer></script>
+<script src="assets/js/data-extra.js?v=48" defer></script>
+<script src="assets/js/data-new.js?v=48" defer></script>
+<script src="assets/js/site.js?v=48" defer></script>
+<script src="assets/js/motion.js?v=48" defer></script>
+</body>
+</html>
