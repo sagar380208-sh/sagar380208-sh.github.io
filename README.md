@@ -1,6 +1,6 @@
 # Sagar Sharma: portfolio
 
-Business × Marketing × Analytics.
+Growth & marketing analytics.
 
 Live site: https://sagar380208-sh.github.io
 

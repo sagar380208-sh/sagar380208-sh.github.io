@@ -227,7 +227,7 @@ function home(){
     <div class="hx-avail mono"><i></i>Open to new roles</div>
     <h1 class="hx-title"><span class="vh">Sagar Sharma: </span><span class="hx-w hx-w1">hey,</span><span class="hx-w hx-w2">i’m sagar</span></h1>
     <div class="hx-notes">
-      <p class="hx-note"><b>Business × Marketing × Analytics.</b> I frame the business problem, analyse the data and recommend what to do.</p>
+      <p class="hx-note"><b>Looking for growth &amp; marketing analyst roles.</b> I’ve won customers in the field and analysed growth on the numbers. Now I want to do it full-time.</p>
       <div class="hx-side mono">PGDM, IMT Nagpur ’26.<br>Polycab India trainee: <a href="#experience">15+ new outlets, ~20% monthly personal sales growth</a>.<br><a class="hx-go" href="#fit">Hiring? Pick the role →</a></div>
     </div>
     <svg class="hx-curve" viewBox="0 0 160 180" aria-hidden="true"><path d="M4 150 C 60 150, 120 120, 150 6" fill="none" stroke="var(--red)" stroke-width="1.2"/></svg>
@@ -262,7 +262,7 @@ function home(){
   <section class="sec fit" id="fit"><div class="wrap">
     <div class="sec-head rv">
       <div><p class="eyebrow">For recruiters and referrers</p><h2 class="display">hiring for <em>which role?</em></h2></div>
-      <p class="lede">Pick one. You get the real experience and the three cases that matter for it, plus a link to send on.</p>
+      <p class="lede">I’m focused on growth and marketing analytics, with strategy and business analysis alongside. Pick one to see the real experience and the three cases that matter for it, plus a link to send on.</p>
     </div>
     <div class="fit-tabs rv" role="group" aria-label="Choose a role">${window.ROLES.map(r=>`<button class="chip" data-r="${r.id}" aria-pressed="false">${r.name}</button>`).join("")}</div>
     <div class="fit-panel rv" aria-live="polite"></div>
@@ -671,7 +671,7 @@ function resume(){
     <div class="cv-top">
       <div>
         <h1 class="cv-name">${S.name}</h1>
-        <p><b>Business × Marketing × Analytics.</b> PGDM in Marketing &amp; Strategy, IMT Nagpur, on a commerce degree.</p>
+        <p><b>Growth &amp; marketing analytics.</b> PGDM in Marketing &amp; Strategy, IMT Nagpur, on a commerce degree.</p>
         <p>I frame the business problem, analyse the data in Excel, SQL, Tableau, Power BI or Python, and recommend what to do. Currently a Polycab India trainee on the Territory Sales Manager track; open to new roles.</p>
       </div>
       <div class="cv-contact">${S.city}<br><a href="mailto:${S.email}">${S.email}</a><br><a href="tel:${S.phone.replace(/\s/g,"")}">${S.phone}</a><br><a href="${S.linkedin}" target="_blank" rel="noopener">${S.linkedinLabel}</a><br><a href="https://${S.url}">${S.url}</a></div>

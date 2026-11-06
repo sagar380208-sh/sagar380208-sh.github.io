@@ -669,3 +669,4 @@ body{overflow-x:clip}
 
 /* the note sits low enough to clear the descender of "sagar" */
 @media (min-width:1100px){.hx .hx-note{bottom:clamp(28px,6svh,64px);padding:16px 18px;font-size:clamp(17px,1.32vw,21px)}}
+@media (min-width:900px) and (max-width:1099px) and (orientation:landscape){.hx .hx-note{bottom:clamp(18px,4svh,40px);padding:13px 15px;font-size:16px}}

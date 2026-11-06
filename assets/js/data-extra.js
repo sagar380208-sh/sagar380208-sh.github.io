@@ -9,7 +9,7 @@
 const W = window, D = W.DATA_PROJECTS;
 const get = id => D.find(d => d.id === id);
 
-W.SITE.role = "Business × Marketing × Analytics";
+W.SITE.role = "Growth & Marketing Analytics";
 
 /* ---------- richer detail on existing data projects ---------- */
 (function(){

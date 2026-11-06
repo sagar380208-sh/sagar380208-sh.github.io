@@ -323,24 +323,15 @@ W.FEATURED = [`vi`,`blinkitgm`,`ather`,`vip`,`snitch`,`merger`,`zinga`];
 
 /* "hiring for which role?" Real experience only; cases are labelled as independent on their pages */
 W.ROLES = [
-  {id:`ba`, name:`Business Analyst`, pitch:`I frame the business question, build the model under it and turn the answer into something a manager can act on.`,
-   real:[`Polycab India: built an HTML pricing and scheme tool so deals are worked out in the meeting (est. 35% faster).`,`To-Let Globe: identified 12 growth opportunities adopted by leadership, through market research and dashboard analysis.`,`To-Let Globe: built the performance dashboards that tracked a cross-channel growth strategy.`],
-   tools:`Excel · SQL · Power BI · Tableau · financial modelling`, cases:[`vi`,`vip`,`d-hotels`]},
-  {id:`data`, name:`Data Analyst`, pitch:`I clean the data, model it and report what it says, including when it disproves what I expected.`,
-   real:[`To-Let Globe: implemented KPI tracking and built performance dashboards.`,`Ten self-directed builds across SQL, Tableau, Power BI, Python and Excel.`],
-   tools:`SQL · Tableau · Power BI · Python · Excel`, cases:[`d-warehouse`,`d-segment`,`d-movies`]},
-  {id:`marketing`, name:`Marketing Analyst`, pitch:`I read the funnel and the customer together, then say where the next rupee should go.`,
-   real:[`Polycab India: designed a zone-wise retailer WhatsApp recognition plan to drive repeat orders (proposed, not yet run).`,`To-Let Globe: +105% brand reach and +60% qualified leads from a cross-channel strategy, tracked on dashboards I built.`,`Hanbai: in focus-group validation, 20–25% of targeted leads converted through a funnel I designed.`],
-   tools:`Funnel analysis · segmentation · social listening · Excel · Tableau`, cases:[`blinkitgm`,`occasion`,`d-segment`]},
   {id:`growth`, name:`Growth Analyst`, pitch:`I look for the leak before asking for more budget, and I design the test that proves the fix.`,
    real:[`Polycab India: converted 15+ outlets that had never stocked Polycab lighting; personal sales grew about 20% month on month.`,`To-Let Globe: +105% brand reach and +60% qualified leads as Team Lead of a three-person strategy team.`,`Hanbai: 5–10% weekly engagement growth during trial, compounding to about 40% over the trial period.`],
    tools:`Cohort and funnel analysis · CAC / LTV · A/B test design · dashboards`, cases:[`polycab`,`blinkitgm`,`zepto`]},
-  {id:`strategy`, name:`Strategy / Consulting`, pitch:`I answer first, size the options and state the numbers that should stop the plan.`,
-   real:[`Hanbai CEO's Office: self-initiated a GTM strategy and presented it to a 5–7 member board review, which endorsed it to proceed if the product launched.`,`Winner, STRATBUZZ Business Strategy Competition (2024).`],
-   tools:`Problem structuring · market sizing · scenario modelling · benchmarking`, cases:[`vi`,`ather`,`merger`]},
-  {id:`brand`, name:`Brand Management`, pitch:`I start with how people actually behave, then write the positioning and the numbers that support it.`,
-   real:[`To-Let Globe: analysed customer feedback, redesigned the brand framework and implemented KPI tracking.`,`Hanbai: ran interviews and focus groups, then specified three learner personas.`],
-   tools:`Segmentation · positioning · brand audit · consumer research`, cases:[`snitch`,`boat`,`nani`]}
+  {id:`marketing`, name:`Marketing Analyst`, pitch:`I read the funnel and the customer together, then say where the next rupee should go.`,
+   real:[`To-Let Globe: +105% brand reach and +60% qualified leads from a cross-channel strategy, tracked on dashboards I built.`,`Hanbai: in focus-group validation, 20–25% of targeted leads converted through a funnel I designed.`,`Polycab India: designed a zone-wise retailer WhatsApp recognition plan to drive repeat orders (proposed, not yet run).`],
+   tools:`Funnel analysis · segmentation · social listening · Excel · Tableau`, cases:[`blinkitgm`,`occasion`,`d-segment`]},
+  {id:`strategy`, name:`Strategy / Business Analyst`, pitch:`I frame the business question, size the options and state the numbers that should stop the plan.`,
+   real:[`Hanbai CEO's Office: self-initiated a GTM strategy and presented it to a 5–7 member board review, which endorsed it to proceed if the product launched.`,`To-Let Globe: identified 12 growth opportunities adopted by leadership, through market research and dashboard analysis.`,`Winner, STRATBUZZ Business Strategy Competition (2024).`],
+   tools:`Problem structuring · market sizing · scenario modelling · Excel · SQL · Power BI`, cases:[`vi`,`vip`,`ather`]}
 ];
 
 /* focus-area landing pages */

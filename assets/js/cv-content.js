@@ -14,7 +14,7 @@ const contact = `${S.city.replace(" — open to relocation"," (open to relocatio
 function resumeHTML(){
 return `<div class="doc doc-resume">
 <h1>SAGAR SHARMA</h1>
-<p class="ttl">Business × Marketing × Analytics</p>
+<p class="ttl">Growth &amp; Marketing Analytics</p>
 <p class="ct">${contact}</p>
 
 <h2>Summary</h2>
@@ -70,7 +70,7 @@ return `<div class="doc doc-cv">
 <p class="kick">CURRICULUM VITAE</p>
 <h1>Sagar Sharma</h1>
 <table class="kv">
-<tr><th>Profession</th><td>Business × Marketing × Analytics: business, data, marketing and strategy analysis</td></tr>
+<tr><th>Profession</th><td>Growth and marketing analytics, with strategy and business analysis</td></tr>
 <tr><th>Availability</th><td>Open to new roles (PGDM completed April 2026)</td></tr>
 <tr><th>Residence</th><td>Delhi — open to relocation</td></tr>
 <tr><th>Contact</th><td>${S.phone} · ${S.email} · ${S.linkedinLabel} · ${S.url}</td></tr>
