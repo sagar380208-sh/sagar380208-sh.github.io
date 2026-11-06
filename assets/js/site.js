@@ -197,6 +197,18 @@ function stack(cards){
   };
   let q = false;
   window.addEventListener("scroll", ()=>{ if(!q){ q = true; requestAnimationFrame(()=>{ q = false; fx(); }); } }, {passive:true});
+  /* keyboard: a focused link must not stay hidden under a later card */
+  const shown = e => { const r = e.getBoundingClientRect(), y = r.top + r.height/2; if(y < nav || y > window.innerHeight) return false;
+    const hit = document.elementFromPoint(r.left + r.width/2, y); return !!hit && (e === hit || e.contains(hit)); };
+  cards.forEach(c => c.addEventListener("focusin", e => {
+    const t = e.target, m = c.previousElementSibling;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      if(!m || shown(t)) return;
+      window.scrollTo({top: m.getBoundingClientRect().top + window.scrollY - nav - 8, behavior:"instant"});
+      const b = t.getBoundingClientRect().bottom - window.innerHeight + 16;
+      if(b > 0) window.scrollBy({top:b, behavior:"instant"});
+    }));
+  }));
   window.addEventListener("resize", layout);
   if("ResizeObserver" in window){ const ro = new ResizeObserver(layout); cards.forEach(c=>ro.observe(c)); }
   layout();

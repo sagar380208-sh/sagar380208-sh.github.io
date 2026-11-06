@@ -21,15 +21,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=48">
-<link rel="stylesheet" href="assets/css/deck.css?v=48">
+<link rel="stylesheet" href="assets/css/site.css?v=49">
+<link rel="stylesheet" href="assets/css/deck.css?v=49">
 </head>
 <body data-page="case" data-id="d-powerbi">
 <main id="main"><div class="pre"><article><h1>Power BI Star Schema</h1><p>Data modelling · DAX · Row-level security. Self-directed data project by Sagar Sharma.</p><p>A chaotic many-to-many model rebuilt as a clean galaxy schema — without breaking the business metrics.</p><ul><li>−20%: File size</li><li>1: Shared date dimension</li><li>RLS: By user region</li></ul><h2>The problem</h2><p>An inherited model had many-to-many relationships and circular filter directions, producing wrong numbers.</p><p>Turn it into a high-performance star (galaxy) schema while protecting core metrics.</p><h2>What I built</h2><ul><li>Power Query shaping: unpivot for inventory snapshots, append/merge to unify order headers and details.</li><li>A shared date dimension via CALENDARAUTO() for cross-fact comparison across sales, inventory and budget.</li><li>Row-level security with DAX filter expressions restricting data by user region.</li><li>Junk dimension: low-cardinality flags (order channel, shipping method, priority) pulled out of the wide fact table into one dimension, slimming the fact table.</li><li>Two dates, one calendar: an inactive Ship Date relationship switched on inside a measure with USERELATIONSHIP, so one date table served order and ship views.</li></ul><h2>The result</h2><p>File size cut 20% by removing redundant hash keys; a centralised measures table standardised reporting.</p><h2>How I contributed</h2><p>Self-directed. I audited the inherited model, reshaped the sources in Power Query, rebuilt the relationships as a star (galaxy) schema, wrote the date table and measures, and secured it with row-level security.</p><h2>What I learned</h2><p>Most &quot;wrong numbers&quot; are modelling problems, not DAX problems. Get the grain and the relationships right — one-to-many, one direction — and the measures become short enough to trust.</p><p><a href="./">Back to Sagar Sharma's portfolio</a></p><p>Email: <a href="mailto:sagar380208@gmail.com">sagar380208@gmail.com</a> · <a href="https://www.linkedin.com/in/sagar0sharma/">LinkedIn</a> · <a href="resume">Resume</a> · <a href="cv">CV</a></p></article></div></main>
-<script src="assets/js/data.js?v=48" defer></script>
-<script src="assets/js/data-extra.js?v=48" defer></script>
-<script src="assets/js/data-new.js?v=48" defer></script>
-<script src="assets/js/site.js?v=48" defer></script>
-<script src="assets/js/motion.js?v=48" defer></script>
+<script src="assets/js/data.js?v=49" defer></script>
+<script src="assets/js/data-extra.js?v=49" defer></script>
+<script src="assets/js/data-new.js?v=49" defer></script>
+<script src="assets/js/site.js?v=49" defer></script>
+<script src="assets/js/motion.js?v=49" defer></script>
 </body>
 </html>
